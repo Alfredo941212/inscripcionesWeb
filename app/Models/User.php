@@ -24,7 +24,12 @@ class User extends Authenticatable
         'phone',
         'role',
         'password',
+        'hash_constancia',
+        'hash_cfdi',
+        'hash_foto',
+        'firma_digital',
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -49,6 +54,10 @@ class User extends Authenticatable
     public function participantProfile()
     {
         return $this->hasOne(ParticipantProfile::class);
+    }
+    public function profile()
+    {
+        return $this->hasOne(ParticipantProfile::class, 'user_id');
     }
 
     public function reviewedParticipants()

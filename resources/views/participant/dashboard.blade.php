@@ -9,7 +9,7 @@
         'accepted' => 'Aceptado',
         'rejected' => 'Rechazado',
     ];
-    $canManageDisciplines = $profile->status === 'accepted';
+    $canManageDisciplines =  $profile->status === 'accepted';
 @endphp
 
 <div class="container">

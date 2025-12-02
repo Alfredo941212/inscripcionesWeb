@@ -6,6 +6,12 @@
 <div class="container">
     <h1 class="h4 fw-bold text-primary mb-4">Panel administrativo</h1>
 
+    <a href="{{ route('admin.protocolos') }}" class="btn btn-dark btn-sm mb-3">
+        <i class="bi bi-shield-lock me-1"></i> Protocolos de Seguridad
+    </a>
+
+    
+
     <div class="row g-3 mb-4">
         <div class="col-md-3">
             <div class="card border-0 shadow-sm text-center">

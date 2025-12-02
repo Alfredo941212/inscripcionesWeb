@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('blocks', function (Blueprint $table) {
             $table->id();
+            $table->longText('data');
+            $table->string('hash');
+            $table->string('previous_hash');
             $table->timestamps();
         });
     }

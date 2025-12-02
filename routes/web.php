@@ -15,8 +15,12 @@ use App\Http\Controllers\Participant\DisciplineController;
 use App\Http\Controllers\Participant\ProfileController;
 use App\Http\Controllers\Supervisor\DashboardController as SupervisorDashboardController;
 use App\Http\Controllers\ReportExportDownloadController;
+use App\Http\Controllers\SecurityProtocolsController;
+use App\Http\Controllers\FirmaController;
+
 use App\Models\Discipline;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     $disciplines = Discipline::where('is_active', true)
@@ -97,3 +101,15 @@ Route::get('/verificar-certs', function () {
         "public_exists" => Storage::exists('certs/public.pem'),
     ];
 });
+
+Route::get('/sign', [DigitalSignatureController::class, 'sign']);
+Route::get('/verify', [DigitalSignatureController::class, 'verify']);
+
+Route::get('/admin/protocolos', [\App\Http\Controllers\Admin\SecurityProtocolsController::class, 'index'])
+    ->name('admin.protocolos');
+
+Route::get('/admin/verificar-firma', [\App\Http\Controllers\Admin\FirmaController::class, 'index'])
+    ->name('admin.firma.index');
+
+Route::post('/admin/verificar-firma', [\App\Http\Controllers\Admin\FirmaController::class, 'verificar'])
+    ->name('admin.firma.verificar');
