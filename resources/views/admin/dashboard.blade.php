@@ -184,6 +184,29 @@
                 <i class="bi bi-file-earmark-pdf me-1"></i> Generar PDF
             </a>
         </div>
+        
+       <p>Ruta generada: {{ route('admin.ipsec') }}</p>
+
+        <a href="{{ route('admin.ipsec') }}" class="btn btn-outline-dark btn-sm">
+            <i class="bi bi-shield-lock"></i> IPSEC
+        </a>
+        <form action="{{ route('admin.ftps.send') }}" method="POST" class="d-inline">
+            @csrf
+            <button class="btn btn-outline-info btn-sm">
+                <i class="bi bi-cloud-upload"></i> Enviar FTPS
+            </button>
+            @if(session('ftps'))
+            <div class="alert alert-info mt-3">
+                <strong>{{ session('ftps')['status'] }}</strong><br>
+                Servidor: {{ session('ftps')['server'] }} <br>
+                Puerto: {{ session('ftps')['port'] }} <br>
+                Acción: {{ session('ftps')['action'] }} <br>
+                Fecha: {{ session('ftps')['timestamp'] }}
+            </div>
+       
+            @endif
+        </form>
+
     </div>
 
     <div class="card border-0 shadow-sm mb-4">
@@ -245,6 +268,10 @@
                 </div>
             @endif
         </div>
+        <form action="{{ route('admin.ftps.send') }}" method="POST" class="d-inline">
+    @csrf
+</form>
+
     </div>
 
     <div class="card border-0 shadow-sm">

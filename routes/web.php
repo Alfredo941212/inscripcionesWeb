@@ -1,4 +1,3 @@
-
 <?php
 
 use App\Http\Controllers\OAuthController;
@@ -17,6 +16,8 @@ use App\Http\Controllers\Supervisor\DashboardController as SupervisorDashboardCo
 use App\Http\Controllers\ReportExportDownloadController;
 use App\Http\Controllers\SecurityProtocolsController;
 use App\Http\Controllers\FirmaController;
+use App\Http\Controllers\Admin\FtpsController;
+use App\Http\Controllers\Admin\IpsecController;
 
 use App\Models\Discipline;
 use Illuminate\Support\Facades\Route;
@@ -113,3 +114,14 @@ Route::get('/admin/verificar-firma', [\App\Http\Controllers\Admin\FirmaControlle
 
 Route::post('/admin/verificar-firma', [\App\Http\Controllers\Admin\FirmaController::class, 'verificar'])
     ->name('admin.firma.verificar');
+
+Route::post('/admin/ftps/send', [FtpsController::class, 'send'])
+    ->name('admin.ftps.send');
+
+
+//ISPEC
+Route::get('/admin/ipsec', [IpsecController::class, 'index'])
+    ->name('admin.ipsec');
+
+Route::post('/admin/ipsec/send', [IpsecController::class, 'send'])
+    ->name('admin.ipsec.send');
